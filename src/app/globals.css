@@ -1,4 +1,4 @@
-.home-page {
+body {
   background: hsla(300, 100%, 97%, 1);
 
   background: linear-gradient(
@@ -22,11 +22,24 @@
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFF2FF", endColorstr="#FC78DB", GradientType=1 );
 }
 
-.start-menu {
+.center-card {
   background: white;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 450px;
   text-align: center;
+}
+
+.center-content {
+  min-height: "100vh";
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
