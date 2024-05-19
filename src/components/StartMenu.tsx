@@ -40,7 +40,7 @@ const StartMenu = () => {
         </ListItem>
         <Divider />
         <ListItem component="div" disablePadding>
-          <ListItemButton sx={{ height: 56 }}>
+          <ListItemButton href="/self-improvement" sx={{ height: 56 }}>
             <ListItemIcon>
               <SelfImprovementSharp color="primary" />
             </ListItemIcon>
