@@ -1,10 +1,20 @@
 "use client";
 
-import { DeleteOutlineSharp, Home } from "@mui/icons-material";
+import {
+  AccountCircle,
+  DeleteOutlineSharp,
+  EditNoteSharp,
+  Home,
+  Task,
+} from "@mui/icons-material";
 import {
   Box,
   Button,
   Divider,
+  FormControl,
+  Input,
+  InputAdornment,
+  InputLabel,
   ListItem,
   TextField,
   Typography,
@@ -69,6 +79,7 @@ const TasksPage = () => {
       <form onSubmit={handleSubmit}>
         <Box
           sx={{
+            width: "100%",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -76,12 +87,27 @@ const TasksPage = () => {
           }}
         >
           <TextField
+            fullWidth
             type="text"
+            id="task"
+            label="New Task"
             variant="standard"
             value={task}
             onChange={(e) => setTask(e.target.value)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <EditNoteSharp />
+                </InputAdornment>
+              ),
+            }}
           />
-          <Button color="primary" variant="contained" type="submit">
+          <Button
+            color="primary"
+            variant="contained"
+            type="submit"
+            sx={{ width: "35%", marginLeft: 2 }}
+          >
             Add Task
           </Button>
         </Box>
