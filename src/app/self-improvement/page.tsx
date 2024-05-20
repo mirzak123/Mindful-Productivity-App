@@ -33,7 +33,7 @@ const SelfImprovement = () => {
       </Button>
       <Box className="center-card" sx={{ minHeight: "250px" }}>
         <Typography variant="h4" marginBottom={4} fontWeight={"bold"}>
-          Self Improvement
+          Take some advice
         </Typography>
         <Advice />
       </Box>

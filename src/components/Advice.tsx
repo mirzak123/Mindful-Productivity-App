@@ -1,5 +1,6 @@
 "use client";
 
+import { RestartAltSharp } from "@mui/icons-material";
 import { Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
@@ -19,8 +20,12 @@ const Advice = () => {
 
   return (
     <Box>
-      <Typography>{advice}</Typography>
-      <Button onClick={() => fetchAdvice()}>New Advice</Button>
+      <Typography variant="h4" color="primary" marginBottom={2}>
+        {advice}
+      </Typography>
+      <Button onClick={() => fetchAdvice()}>
+        <RestartAltSharp />
+      </Button>
     </Box>
   );
 };
