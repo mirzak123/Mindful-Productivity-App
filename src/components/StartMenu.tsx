@@ -55,7 +55,7 @@ const StartMenu = () => {
         </ListItem>
         <Divider />
         <ListItem component="div" disablePadding>
-          <ListItemButton sx={{ height: 56 }}>
+          <ListItemButton href="/focus-timer" sx={{ height: 56 }}>
             <ListItemIcon>
               <Timelapse color="primary" />
             </ListItemIcon>

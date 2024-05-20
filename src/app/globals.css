@@ -44,3 +44,9 @@ body {
   font-weight: 600;
   margin-bottom: 20px;
 }
+
+.timer-digit {
+  width: 1ch;
+  text-align: center;
+  font-size: 5rem;
+}
