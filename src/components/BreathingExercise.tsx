@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
 import { Box, Typography, useTheme } from "@mui/material";
 
 const BreathingExercise: React.FC = () => {
-  const controls = useAnimation();
+  const controls = useAnimationControls();
   const theme = useTheme();
   const isMounted = useRef(true);
   const [text, setText] = useState<string>("Inhale");
@@ -18,6 +18,7 @@ const BreathingExercise: React.FC = () => {
         if (!isMounted.current) return;
         setText("Hold");
         await new Promise((resolve) => setTimeout(resolve, 2000)); // Hold
+        if (!isMounted.current) return;
         setText("Exhale");
         await controls.start({ scale: 1, transition: { duration: 4 } }); // Exhale
         if (!isMounted.current) return;
@@ -29,6 +30,7 @@ const BreathingExercise: React.FC = () => {
     breathingSequence();
     return () => {
       isMounted.current = false;
+      controls.stop();
     };
   }, [controls]);
 
