@@ -1,6 +1,7 @@
 "use client";
 
 import BreathingExercise from "@/components/BreathingExercise";
+import CenterCard from "@/components/CenterCard";
 import HomeButton from "@/components/HomeButton";
 import { Box, Typography } from "@mui/material";
 
@@ -16,12 +17,12 @@ const BreathingExercisesPage = () => {
       }}
     >
       <HomeButton />
-      <Box className="center-card">
+      <CenterCard>
         <Typography variant="h4" marginBottom={4} fontWeight={"bold"}>
           Breathing Exercises
         </Typography>
         <BreathingExercise />
-      </Box>
+      </CenterCard>
     </Box>
   );
 };

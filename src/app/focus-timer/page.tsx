@@ -1,5 +1,6 @@
 "use client";
 
+import CenterCard from "@/components/CenterCard";
 import FocusTimer from "@/components/FocusTimer";
 import HomeButton from "@/components/HomeButton";
 import { Box, Typography } from "@mui/material";
@@ -16,12 +17,12 @@ const FocusTimerPage = () => {
       }}
     >
       <HomeButton />
-      <Box className="center-card">
+      <CenterCard>
         <Typography variant="h4" marginBottom={4} fontWeight={"bold"}>
           Focus Timer
         </Typography>
         <FocusTimer />
-      </Box>
+      </CenterCard>
     </Box>
   );
 };

@@ -34,16 +34,6 @@ const BreathingExercise: React.FC = () => {
     };
   }, [controls]);
 
-  const pulseAnimation = {
-    scale: [2, 1, 2],
-    opacity: [0.5, 0, 0],
-    transition: {
-      delay: 6,
-      duration: 10,
-      repeat: Infinity,
-    },
-  };
-
   return (
     <Box
       sx={{

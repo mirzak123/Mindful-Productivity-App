@@ -22,16 +22,6 @@ body {
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFF2FF", endColorstr="#FC78DB", GradientType=1 );
 }
 
-.center-card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  min-width: 450px;
-  max-width: 800px;
-  text-align: center;
-}
-
 .center-content {
   min-height: "100vh";
   display: "flex";

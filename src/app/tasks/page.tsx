@@ -1,5 +1,6 @@
 "use client";
 
+import CenterCard from "@/components/CenterCard";
 import HomeButton from "@/components/HomeButton";
 import { DeleteOutlineSharp, EditNoteSharp } from "@mui/icons-material";
 import {
@@ -113,13 +114,13 @@ const TasksPage = () => {
       }}
     >
       <HomeButton />
-      <Box className="center-card">
+      <CenterCard>
         <Typography variant="h4" marginBottom={4} fontWeight={"bold"}>
           Tasks
         </Typography>
         {renderTaskForm()}
         {renderTasks()}
-      </Box>
+      </CenterCard>
     </Box>
   );
 };

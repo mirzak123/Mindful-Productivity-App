@@ -2,6 +2,7 @@
 
 import { RestartAltSharp } from "@mui/icons-material";
 import { Box, Button, Typography } from "@mui/material";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const Advice = () => {
@@ -19,14 +20,14 @@ const Advice = () => {
   }, []);
 
   return (
-    <Box>
+    <motion.div layout initial={{ opacity: 0 }} exit={{ opacity: 0 }}>
       <Typography variant="h4" color="primary" marginBottom={2}>
         {advice}
       </Typography>
       <Button onClick={() => fetchAdvice()}>
         <RestartAltSharp />
       </Button>
-    </Box>
+    </motion.div>
   );
 };
 

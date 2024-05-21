@@ -16,10 +16,11 @@ import {
   SelfImprovementSharp,
   Timelapse,
 } from "@mui/icons-material";
+import CenterCard from "./CenterCard";
 
 const StartMenu = () => {
   return (
-    <Box className="center-card">
+    <CenterCard>
       <Typography variant="h4" marginBottom={4} fontWeight={"bold"}>
         Mindful Productivity App
       </Typography>
@@ -84,7 +85,7 @@ const StartMenu = () => {
           </ListItemButton>
         </ListItem>
       </List>
-    </Box>
+    </CenterCard>
   );
 };
 
