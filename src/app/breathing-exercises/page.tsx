@@ -1,13 +1,12 @@
 "use client";
 
-import Advice from "@/components/Advice";
+import BreathingExercise from "@/components/BreathingExercise";
 import HomeButton from "@/components/HomeButton";
 import { Box, Typography } from "@mui/material";
 
-const SelfImprovement = () => {
+const BreathingExercisesPage = () => {
   return (
     <Box
-      className="center-content"
       sx={{
         minHeight: "100vh",
         display: "flex",
@@ -17,14 +16,14 @@ const SelfImprovement = () => {
       }}
     >
       <HomeButton />
-      <Box className="center-card" sx={{ minHeight: "250px" }}>
+      <Box className="center-card">
         <Typography variant="h4" marginBottom={4} fontWeight={"bold"}>
-          Take some advice
+          Breathing Exercises
         </Typography>
-        <Advice />
+        <BreathingExercise />
       </Box>
     </Box>
   );
 };
 
-export default SelfImprovement;
+export default BreathingExercisesPage;

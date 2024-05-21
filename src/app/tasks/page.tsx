@@ -1,29 +1,19 @@
 "use client";
 
-import {
-  AccountCircle,
-  DeleteOutlineSharp,
-  EditNoteSharp,
-  Home,
-  Task,
-} from "@mui/icons-material";
+import HomeButton from "@/components/HomeButton";
+import { DeleteOutlineSharp, EditNoteSharp } from "@mui/icons-material";
 import {
   Box,
   Button,
   Divider,
-  FormControl,
-  Input,
   InputAdornment,
-  InputLabel,
   ListItem,
   TextField,
   Typography,
 } from "@mui/material";
-import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useState } from "react";
 
 const TasksPage = () => {
-  const router = useRouter();
   const [tasks, setTasks] = useState<string[]>([]);
   const [task, setTask] = useState<string>("");
 
@@ -53,18 +43,15 @@ const TasksPage = () => {
 
   const renderTasks = () => {
     return tasks.map((task, index) => (
-      <>
+      <Box key={index}>
         {index > 0 && <Divider />}
-        <ListItem
-          key={index}
-          sx={{ display: "flex", justifyContent: "space-between" }}
-        >
+        <ListItem sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography>{task}</Typography>
           <Button onClick={() => removeTask(index)}>
             <DeleteOutlineSharp />
           </Button>
         </ListItem>
-      </>
+      </Box>
     ));
   };
 
@@ -90,7 +77,6 @@ const TasksPage = () => {
             fullWidth
             type="text"
             id="task"
-            label="New Task"
             variant="standard"
             value={task}
             onChange={(e) => setTask(e.target.value)}
@@ -126,18 +112,7 @@ const TasksPage = () => {
         position: "relative",
       }}
     >
-      <Button
-        sx={{
-          position: "absolute",
-          top: 16,
-          left: 16,
-          borderRadius: 28,
-        }}
-        variant="contained"
-        onClick={() => router.push("/")}
-      >
-        <Home />
-      </Button>
+      <HomeButton />
       <Box className="center-card">
         <Typography variant="h4" marginBottom={4} fontWeight={"bold"}>
           Tasks

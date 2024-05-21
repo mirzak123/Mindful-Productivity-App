@@ -70,7 +70,7 @@ const StartMenu = () => {
         </ListItem>
         <Divider />
         <ListItem component="div" disablePadding>
-          <ListItemButton sx={{ height: 56 }}>
+          <ListItemButton href="/breathing-exercises" sx={{ height: 56 }}>
             <ListItemIcon>
               <Air color="primary" />
             </ListItemIcon>

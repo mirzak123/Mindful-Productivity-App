@@ -41,12 +41,12 @@ const FocusTimer = () => {
           autoWidth
           label="Age"
         >
-          <MenuItem value={1 / 6}>Ten seconds</MenuItem>
-          <MenuItem value={0.5}>Thirty seconds</MenuItem>
-          <MenuItem value={10}>Ten minutes</MenuItem>
-          <MenuItem value={20}>Twenty minutes</MenuItem>
-          <MenuItem value={30}>Thirty minues</MenuItem>
-          <MenuItem value={60}>One hour</MenuItem>
+          <MenuItem value={1 / 6}>10 seconds</MenuItem>
+          <MenuItem value={0.5}>30 seconds</MenuItem>
+          <MenuItem value={10}>10 minutes</MenuItem>
+          <MenuItem value={20}>20 minutes</MenuItem>
+          <MenuItem value={30}>30 minues</MenuItem>
+          <MenuItem value={60}>1 hour</MenuItem>
         </Select>
       </FormControl>
     );
