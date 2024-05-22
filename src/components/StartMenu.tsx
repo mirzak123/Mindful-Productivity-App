@@ -13,6 +13,7 @@ import {
 import {
   Air,
   ChecklistRtl,
+  PaletteSharp,
   SelfImprovementSharp,
   Timelapse,
 } from "@mui/icons-material";
@@ -77,6 +78,21 @@ const StartMenu = () => {
             </ListItemIcon>
             <ListItemText
               primary="Breathing Exercises"
+              primaryTypographyProps={{
+                color: "primary",
+                fontWeight: "medium",
+              }}
+            />
+          </ListItemButton>
+        </ListItem>
+        <Divider />
+        <ListItem component="div" disablePadding>
+          <ListItemButton href="/custom-themes" sx={{ height: 56 }}>
+            <ListItemIcon>
+              <PaletteSharp color="primary" />
+            </ListItemIcon>
+            <ListItemText
+              primary="Custom Themes"
               primaryTypographyProps={{
                 color: "primary",
                 fontWeight: "medium",

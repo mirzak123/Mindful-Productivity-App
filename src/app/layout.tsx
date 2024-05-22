@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import { ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@/theme/ThemeContext";
 import CssBaseline from "@mui/material/CssBaseline";
 import "./globals.css";
-import theme from "@/theme/theme";
 
 const roboto = Roboto({ weight: "400", subsets: ["latin"] });
 
@@ -20,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider>
           <CssBaseline />
           {children}
         </ThemeProvider>
