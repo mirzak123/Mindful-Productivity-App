@@ -44,7 +44,6 @@ export const useTasks = () => {
 
 export const TasksProvider = ({ children }: { children: ReactNode }) => {
   const { user, loading } = useAuth();
-  console.log("from tasks", user);
   const [tasks, setTasks] = useState<Task[]>([]);
 
   useEffect(() => {

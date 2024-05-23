@@ -1,8 +1,7 @@
 "use client";
 
 import { RestartAltSharp } from "@mui/icons-material";
-import { Box, Button, Typography } from "@mui/material";
-import { motion } from "framer-motion";
+import { Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 const Advice = () => {
@@ -15,7 +14,7 @@ const Advice = () => {
       const data = await response.json();
       setAdvice(data.slip.advice);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setAdvice(
         "Something went wrong. Check your internet connection and try again.",
       );
