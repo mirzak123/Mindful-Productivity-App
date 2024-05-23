@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Box } from "@mui/material";
 import StartMenu from "@/components/StartMenu";
 

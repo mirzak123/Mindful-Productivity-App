@@ -2,6 +2,9 @@
 
 import CenterCard from "@/components/CenterCard";
 import HomeButton from "@/components/HomeButton";
+import LogoutButton from "@/components/LogoutButton";
+import withAuth from "@/hoc/withAuth";
+import { useTasks } from "@/hooks/useTasks";
 import { DeleteOutlineSharp, EditNoteSharp } from "@mui/icons-material";
 import {
   Box,
@@ -12,43 +15,29 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 
 const TasksPage = () => {
-  const [tasks, setTasks] = useState<string[]>([]);
+  const { tasks, addTask, deleteTask } = useTasks();
+
   const [task, setTask] = useState<string>("");
-
-  useEffect(() => {
-    const tasks = localStorage.getItem("tasks");
-    if (tasks) setTasks(JSON.parse(tasks));
-  }, []);
-
-  const addTask = (task: string) => {
-    if (!task) return;
-    setTasks([...tasks, task]);
-    localStorage.setItem("tasks", JSON.stringify([...tasks, task]));
-  };
-
-  const removeTask = (index: number) => {
-    setTasks(tasks.filter((_, i) => i !== index));
-    localStorage.setItem(
-      "tasks",
-      JSON.stringify(tasks.filter((_, i) => i !== index)),
-    );
-  };
-
-  const clearTasks = () => {
-    setTasks([]);
-    localStorage.removeItem("tasks");
-  };
+  //
+  // const addTask = (task: string) => {
+  //   if (!task) return;
+  //   setTasks([...tasks, task]);
+  // };
+  //
+  // const removeTask = (index: number) => {
+  //   setTasks(tasks.filter((_, i) => i !== index));
+  // };
 
   const renderTasks = () => {
     return tasks.map((task, index) => (
-      <Box key={index}>
+      <Box key={task.id}>
         {index > 0 && <Divider />}
         <ListItem sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography>{task}</Typography>
-          <Button onClick={() => removeTask(index)}>
+          <Typography>{task.title}</Typography>
+          <Button onClick={() => deleteTask(task.id)}>
             <DeleteOutlineSharp />
           </Button>
         </ListItem>
@@ -114,6 +103,7 @@ const TasksPage = () => {
       }}
     >
       <HomeButton />
+      <LogoutButton />
       <CenterCard>
         <Typography variant="h4" marginBottom={4} fontWeight={"bold"}>
           Tasks
@@ -125,4 +115,4 @@ const TasksPage = () => {
   );
 };
 
-export default TasksPage;
+export default withAuth(TasksPage);
