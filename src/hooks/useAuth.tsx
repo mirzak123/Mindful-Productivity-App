@@ -7,7 +7,7 @@ import {
   createContext,
   ReactNode,
 } from "react";
-import { auth } from "../../firebase.config.ts";
+import { auth } from "../../firebase.config";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,

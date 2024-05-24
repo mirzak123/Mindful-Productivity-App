@@ -7,7 +7,7 @@ import {
   createContext,
   ReactNode,
 } from "react";
-import { db } from "../../firebase.config.ts";
+import { db } from "../../firebase.config";
 import {
   collection,
   addDoc,
