@@ -2,7 +2,7 @@
 
 import CenterCard from "@/components/CenterCard";
 import HomeButton from "@/components/HomeButton";
-import LogoutButton from "@/components/LogoutButton";
+import AccountButton from "@/components/AccountButton";
 import withAuth from "@/hoc/withAuth";
 import { useTasks } from "@/hooks/useTasks";
 import { DeleteOutlineSharp, EditNoteSharp } from "@mui/icons-material";
@@ -103,7 +103,7 @@ const TasksPage = () => {
       }}
     >
       <HomeButton />
-      <LogoutButton />
+      <AccountButton />
       <CenterCard>
         <Typography variant="h4" marginBottom={4} fontWeight={"bold"}>
           Tasks
