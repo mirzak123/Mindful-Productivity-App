@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Mindful Productivity App
 
-## Getting Started
+## Overview
 
-First, run the development server:
+The Mindful Productivity App is designed to enhance productivity through mindfulness. It combines task management with self-improvement features like focus timers and breathing exercises to improve overall well-being and efficiency.
 
-```bash
+## Features
+
+- **Task Manager**: Organize, prioritize, and manage your tasks efficiently.
+- **Mindful Reminders**: Get reminders to take breaks and practice mindfulness.
+- **Focus Timer**: Use a Pomodoro timer to maintain focus with customizable intervals.
+- **Breathing Exercises**: Follow guided breathing exercises to reduce stress.
+- **Daily Affirmations**: Receive motivational quotes and affirmations.
+- **Custom Themes**: Personalize the app with three distinct color themes.
+
+## Technologies Used
+
+- **Next.js**: Frontend framework for server-side rendering.
+- **TypeScript**: For static typing and enhanced code maintainability.
+- **Firebase**: Backend services for user authentication, database management, and hosting.
+
+## Installation
+
+### Prerequisites
+
+- Node.js
+- npm or yarn
+
+### Steps
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/mindful-productivity-app.git
+   cd mindful-productivity-app
+Install dependencies:
+
+sh
+Copy code
+npm install
+### or
+yarn install
+Set up Firebase:
+
+Create a Firebase project.
+Enable Firebase Authentication and Firestore.
+Copy your Firebase config to a .env file.
+Run the application:
+
+sh
+Copy code
 npm run dev
-# or
+### or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Team
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Team
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scrum Master: Amer Đidelija
+Facilitates agile ceremonies, removes impediments, and coaches the team on agile best practices.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Frontend Developer: Mirza Kadrić
+Develops the user interface, ensuring responsive design and feature implementation.
 
-## Learn More
+## Backend Developer & Product Owner: Mirza Karić
+Designs and implements backend architecture, server-side logic, and ensures data security.
 
-To learn more about Next.js, take a look at the following resources:
+## Technical Writer: Adna Dedić
+Creates and maintains comprehensive documentation.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## QA Engineer: Anes Piknjač
+Develops and executes test plans to ensure application quality and functionality.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# Agile Methodology
 
-## Deploy on Vercel
+We follow the Scrum framework to manage our project, ensuring flexibility, continuous feedback, and iterative improvement.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Clean, minimalist interface**: User-friendly navigation for a seamless experience.
+- **Consistent color scheme**: Promoting calmness and focus.
+- **Responsive design**: Accessible across devices.
+
+# Testing and Validation
+
+- **Manual Testing**: Evaluates functionalities and user experience.
+- **Automated Testing with Playwright**: Ensures consistent behavior across environments and browsers.
+
+# Summary
+
+The Mindful Productivity App is a collaborative project aimed at integrating task management with mindfulness practices to boost productivity and well-being. We continue to enhance the app based on user feedback and technological advancements.
+
+# Contributing
+
+We welcome contributions! Please read our Contributing Guidelines for more details.
+
+# License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+# Contact
+
+For any questions or feedback, please contact:
+- Adna Dedić - aadna.dedic@gmail.com
+- Anes Piknjač - anes.piknjac@gmail.com
+- Amer Ðidelija - amer.djidelija@gmail.com
+- Mirza Karić: mirza.karic@gmail.com
+- Mirza Kadrić: kadric681@gmail.com
