@@ -16,20 +16,17 @@ import {
   onSnapshot,
   deleteDoc,
   doc,
+  writeBatch,
+  orderBy,
 } from "firebase/firestore";
 import { useAuth } from "./useAuth";
-
-interface Task {
-  id: string;
-  title: string;
-  userId: string;
-  createdAt: string;
-}
+import { Task } from "@/types/Task";
 
 interface TasksContextType {
   tasks: Task[];
   addTask: (title: string) => Promise<void>;
   deleteTask: (id: string) => Promise<void>;
+  updateTaskOrder: (tasks: Task[]) => Promise<void>;
 }
 
 const TasksContext = createContext<TasksContextType | undefined>(undefined);
@@ -48,7 +45,11 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (!loading && user) {
-      const q = query(collection(db, "tasks"), where("userId", "==", user.uid));
+      const q = query(
+        collection(db, "tasks"),
+        where("userId", "==", user.uid),
+        orderBy("order"),
+      );
       const unsubscribe = onSnapshot(q, (snapshot) => {
         const tasksData = snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -66,6 +67,7 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
       title,
       userId: user?.uid,
       createdAt: new Date().toISOString(),
+      order: tasks.length,
     });
   };
 
@@ -73,8 +75,19 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
     await deleteDoc(doc(db, "tasks", id));
   };
 
+  const updateTaskOrder = async (tasks: Task[]) => {
+    const batch = writeBatch(db);
+    tasks.forEach((task, index) => {
+      const taskRef = doc(db, "tasks", task.id);
+      batch.update(taskRef, { order: index });
+    });
+    await batch.commit();
+  };
+
   return (
-    <TasksContext.Provider value={{ tasks, addTask, deleteTask }}>
+    <TasksContext.Provider
+      value={{ tasks, addTask, deleteTask, updateTaskOrder }}
+    >
       {children}
     </TasksContext.Provider>
   );
