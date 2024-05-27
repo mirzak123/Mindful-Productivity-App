@@ -5,7 +5,11 @@ import HomeButton from "@/components/HomeButton";
 import AccountButton from "@/components/AccountButton";
 import withAuth from "@/hoc/withAuth";
 import { useTasks } from "@/hooks/useTasks";
-import { DeleteOutlineSharp, EditNoteSharp } from "@mui/icons-material";
+import {
+  DeleteOutlineSharp,
+  DragHandle,
+  EditNoteSharp,
+} from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -15,39 +19,66 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { FormEvent, useState } from "react";
+import { FormEvent, useCallback, useState } from "react";
+import {
+  DragDropContext,
+  Draggable,
+  DropResult,
+  DraggableProvided,
+  DroppableProvided,
+} from "react-beautiful-dnd";
+import { Task } from "@/types/Task";
+import { StrictModeDroppable } from "@/components/StrictModeDroppable";
 
 const TasksPage = () => {
-  const { tasks, addTask, deleteTask } = useTasks();
+  const { tasks, addTask, deleteTask, updateTaskOrder } = useTasks();
 
   const [task, setTask] = useState<string>("");
-  //
-  // const addTask = (task: string) => {
-  //   if (!task) return;
-  //   setTasks([...tasks, task]);
-  // };
-  //
-  // const removeTask = (index: number) => {
-  //   setTasks(tasks.filter((_, i) => i !== index));
-  // };
+
+  const onDragEnd = useCallback(
+    (result: DropResult) => {
+      if (!result.destination) {
+        return;
+      }
+
+      const reorderedTasks = Array.from(tasks); // Make a copy
+      const [removed] = reorderedTasks.splice(result.source.index, 1);
+      reorderedTasks.splice(result.destination.index, 0, removed);
+
+      updateTaskOrder(reorderedTasks); // Update task order in database
+    },
+    [tasks, updateTaskOrder],
+  );
 
   const renderTasks = () => {
-    return tasks.map((task, index) => (
-      <Box key={task.id}>
-        {index > 0 && <Divider />}
-        <ListItem sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography>{task.title}</Typography>
-          <Button onClick={() => deleteTask(task.id)}>
-            <DeleteOutlineSharp />
-          </Button>
-        </ListItem>
-      </Box>
+    return tasks.map((task: Task, index: number) => (
+      <Draggable key={task.id} draggableId={task.id} index={index}>
+        {(provided: DraggableProvided) => (
+          <Box
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            sx={{ marginBottom: 2 }}
+          >
+            <ListItem sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Box {...provided.dragHandleProps}>
+                <DragHandle />
+              </Box>
+              <Typography>{task.title}</Typography>
+              <Button onClick={() => deleteTask(task.id)}>
+                <DeleteOutlineSharp />
+              </Button>
+            </ListItem>
+          </Box>
+        )}
+      </Draggable>
     ));
   };
 
   const renderTaskForm = () => {
     const handleSubmit = (e: FormEvent) => {
       e.preventDefault();
+      if (!task) return;
       addTask(task);
       setTask("");
     };
@@ -109,7 +140,16 @@ const TasksPage = () => {
           Tasks
         </Typography>
         {renderTaskForm()}
-        {renderTasks()}
+        <DragDropContext onDragEnd={onDragEnd}>
+          <StrictModeDroppable droppableId="taskList">
+            {(provided: DroppableProvided) => (
+              <div {...provided.droppableProps} ref={provided.innerRef}>
+                {renderTasks()}
+                {provided.placeholder}
+              </div>
+            )}
+          </StrictModeDroppable>
+        </DragDropContext>
       </CenterCard>
     </Box>
   );
