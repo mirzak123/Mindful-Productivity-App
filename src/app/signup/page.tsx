@@ -6,22 +6,38 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import CenterCard from "@/components/CenterCard";
 import HomeButton from "@/components/HomeButton";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const schema = z.object({
+  email: z.string().email("Invalid email address."),
+  password: z.string().min(6, 'Password must be at least 6 characters long')
+})
 
 const SignUpPage = () => {
   const { signUp } = useAuth();
   const router = useRouter();
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
 
-  const handleSignUp = async (e: FormEvent) => {
-    e.preventDefault();
+  const onSubmit: SubmitHandler<{
+    email: string;
+    password: string;
+  }> = async ({ email, password }) => {
     try {
       await signUp(email, password);
       router.push("/tasks");
     } catch (error) {
-      console.error("Sign Up failed:", error);
+      console.error("Login failed:", error);
     }
   };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<{email: string; password: string}>({
+    resolver: zodResolver(schema),
+  })
 
   return (
     <Box
@@ -36,7 +52,7 @@ const SignUpPage = () => {
       <HomeButton />
       <CenterCard>
         <h1>Sign Up</h1>
-        <form onSubmit={handleSignUp}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Box
             sx={{
               display: "flex",
@@ -46,15 +62,15 @@ const SignUpPage = () => {
             }}
           >
             <TextField
-              label="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              {...register("email")}
+              label={errors.email ? errors.email.message : "Email"}
+              error={errors.email ? true : false}
             />
             <TextField
-              label="Password"
+              {...register("password")}
+              label={errors.password ? errors.password.message : "Password"}
+              error={errors.password ? true : false}
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
             />
             <Button type="submit" variant="contained">
               Sign Up
